@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>صيدلية سناء أبو زيد | أدوية مصرية أونلاين</title>
+  <meta name="description" content="صيدلية سناء أبو زيد - منصة متكاملة لشراء الأدوية المصرية والمستلزمات الطبية بأمان وسرعة مع توصيل لجميع المحافظات" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="main-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-icon">💊</div>
+      <div>
+        <h1>صيدلية سناء أبو زيد</h1>
+        <p>كل احتياجاتك الطبية أونلاين</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="#home">الرئيسية</a>
+      <a href="#categories">الأقسام</a>
+      <a href="#products">الأدوية</a>
+      <a href="#prescription">الروشتة</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-login" id="loginBtn">تسجيل الدخول</button>
+      <button class="btn-cart" id="cartBtn">
+        🛒 السلة <span class="cart-badge" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#products">الأدوية</a>
+    <a href="#prescription">الروشتة</a>
+    <a href="#contact">تواصل معنا</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="hero-badge">🚀 توصيل سريع لجميع محافظات مصر</span>
+      <h2>اطلب أدويتك بسهولة<br /><span>واستلمها حتى باب المنزل</span></h2>
+      <p>منصة متكاملة لشراء الأدوية المصرية، الفيتامينات، ومستحضرات العناية الشخصية بأمان وسرعة تامة.</p>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="ابحث عن اسم الدواء أو المنتج..." />
+        <button onclick="doSearch()">🔍 بحث</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span>5000+</span><p>منتج</p></div>
+        <div class="stat"><span>27</span><p>محافظة</p></div>
+        <div class="stat"><span>24/7</span><p>دعم فوري</p></div>
+        <div class="stat"><span>98%</span><p>رضا العملاء</p></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" alt="صيدلية" />
+        <div class="floating-badge badge1">✅ منتجات أصلية معتمدة</div>
+        <div class="floating-badge badge2">⚡ توصيل خلال 24 ساعة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container features-grid">
+    <div class="feature-card"><div class="feature-icon">🚚</div><h3>توصيل سريع</h3><p>خلال ساعات داخل القاهرة وحتى 24 ساعة للمحافظات</p></div>
+    <div class="feature-card"><div class="feature-icon">📄</div><h3>رفع الروشتة</h3><p>ارفع صورة الروشتة وسيتم تجهيز طلبك فوراً</p></div>
+    <div class="feature-card"><div class="feature-icon">💳</div><h3>دفع آمن</h3><p>بطاقات بنكية، فودافون كاش، أو عند الاستلام</p></div>
+    <div class="feature-card"><div class="feature-icon">💬</div><h3>استشارة صيدلي</h3><p>دعم مباشر على مدار الساعة للرد على استفساراتك</p></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section" id="categories">
+  <div class="container">
+    <div class="section-header">
+      <h2>تصفح حسب الفئة</h2>
+      <a href="#products" class="see-all">عرض الكل</a>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <h2>الأدوية الأكثر طلباً</h2>
+      <div class="filter-tabs" id="filterTabs"></div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- OFFERS BANNER -->
+<section class="offers-banner">
+  <div class="container offers-inner">
+    <div class="offer-text">
+      <span class="offer-badge">🔥 عرض محدود</span>
+      <h2>خصم 20% على الفيتامينات والمكملات الغذائية</h2>
+      <p>استخدم كود الخصم: <strong>SANAA20</strong> عند الدفع</p>
+      <button class="btn-primary" onclick="filterByCategory('فيتامينات')">تسوق الآن</button>
+    </div>
+    <div class="offer-image">🎁</div>
+  </div>
+</section>
+
+<!-- PRESCRIPTION UPLOAD -->
+<section class="prescription-section" id="prescription">
+  <div class="container">
+    <div class="prescription-card">
+      <div class="prescription-info">
+        <h2>ارفع الروشتة الطبية</h2>
+        <p>قم برفع صورة الروشتة وسيتولى فريق الصيادلة تجهيز الطلب والتواصل معك لتأكيده خلال 30 دقيقة.</p>
+        <ul class="prescription-steps">
+          <li>📸 التقط صورة واضحة للروشتة</li>
+          <li>📤 ارفعها هنا مباشرة</li>
+          <li>📞 سيتواصل معك الصيدلاني خلال 30 دقيقة</li>
+          <li>🚚 استقبل طلبك في المنزل</li>
+        </ul>
+        <button class="btn-primary" onclick="document.getElementById('prescFile').click()">رفع الروشتة الآن</button>
+        <input type="file" id="prescFile" accept="image/*" style="display:none" onchange="handlePrescription(this)" />
+      </div>
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('prescFile').click()">
+        <div class="upload-icon">📎</div>
+        <p>اسحب الصورة هنا أو اضغط للاختيار</p>
+        <span>PNG, JPG, PDF — حجم أقصى 10 ميجا</span>
+        <div id="prescPreview"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="text-center">ماذا يقول عملاؤنا</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><p>"خدمة ممتازة وسريعة جداً، طلبت الدواء الصبح واستلمته بالظهر!"</p><div class="testimonial-author"><div class="avatar">أ.م</div><div><strong>أحمد محمد</strong><span>القاهرة ⭐⭐⭐⭐⭐</span></div></div></div>
+      <div class="testimonial-card"><p>"أخيراً صيدلية أونلاين بتفهمني! رفعت الروشتة وتواصلوا معايا على طول."</p><div class="testimonial-author"><div class="avatar">ن.ع</div><div><strong>نور علي</strong><span>الإسكندرية ⭐⭐⭐⭐⭐</span></div></div></div>
+      <div class="testimonial-card"><p>"أسعار كويسة ومنتجات أصلية. بنصح كل الناس بيها!"</p><div class="testimonial-author"><div class="avatar">س.ح</div><div><strong>سارة حسن</strong><span>الجيزة ⭐⭐⭐⭐⭐</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>تواصل معنا</h2>
+        <p>فريقنا متاح على مدار الساعة للرد على استفساراتك وتقديم الدعم الصيدلاني المتخصص.</p>
+        <div class="contact-item"><span>📞</span><div><strong>خط العملاء</strong><p>01000000000</p></div></div>
+        <div class="contact-item"><span>📧</span><div><strong>البريد الإلكتروني</strong><p>info@sanaaabuzeid.com</p></div></div>
+        <div class="contact-item"><span>📍</span><div><strong>الموقع</strong><p>القاهرة، مصر</p></div></div>
+        <div class="contact-item"><span>🕐</span><div><strong>ساعات العمل</strong><p>24 ساعة / 7 أيام</p></div></div>
+      </div>
+      <form class="contact-form" onsubmit="submitContact(event)">
+        <h3>أرسل رسالة</h3>
+        <input type="text" placeholder="الاسم الكامل" required />
+        <input type="tel" placeholder="رقم الهاتف" required />
+        <input type="email" placeholder="البريد الإلكتروني" />
+        <textarea placeholder="رسالتك..." rows="4" required></textarea>
+        <button type="submit" class="btn-primary">إرسال الرسالة</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><span>💊</span> صيدلية سناء أبو زيد</div>
+      <p>منصة إلكترونية موثوقة لبيع الأدوية المصرية والمنتجات الصحية بسهولة وأمان تام.</p>
+      <div class="social-links">
+        <a href="#">📘 فيسبوك</a>
+        <a href="#">📸 إنستجرام</a>
+        <a href="#">💬 واتساب</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#products">المنتجات</a></li>
+        <li><a href="#prescription">رفع الروشتة</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>وسائل الدفع</h4>
+      <ul>
+        <li>💳 Visa / MasterCard</li>
+        <li>📱 Vodafone Cash</li>
+        <li>🏦 Instapay</li>
+        <li>💵 الدفع عند الاستلام</li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>خدمة العملاء</h4>
+      <ul>
+        <li>📞 01000000000</li>
+        <li>📧 info@sanaaabuzeid.com</li>
+        <li>⏰ متاح 24/7</li>
+        <li>🚚 توصيل لكل محافظات مصر</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 جميع الحقوق محفوظة — صيدلية سناء أبو زيد</p>
+  </div>
+</footer>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal cart-modal">
+    <div class="modal-header">
+      <h3>🛒 سلة المشتريات</h3>
+      <button class="modal-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal checkout-modal">
+    <div class="modal-header">
+      <h3>💳 إتمام الطلب</h3>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="checkout-steps">
+      <div class="step active" id="step1">
+        <h4>1. بيانات التوصيل</h4>
+        <input type="text" id="co-name" placeholder="الاسم الكامل" />
+        <input type="tel" id="co-phone" placeholder="رقم الهاتف" />
+        <select id="co-gov">
+          <option value="">اختر المحافظة</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+          <option>الشرقية</option><option>الدقهلية</option><option>البحيرة</option>
+          <option>المنوفية</option><option>الغربية</option><option>كفر الشيخ</option>
+          <option>دمياط</option><option>بورسعيد</option><option>الإسماعيلية</option>
+          <option>السويس</option><option>شمال سيناء</option><option>جنوب سيناء</option>
+          <option>الفيوم</option><option>بني سويف</option><option>المنيا</option>
+          <option>أسيوط</option><option>سوهاج</option><option>قنا</option>
+          <option>الأقصر</option><option>أسوان</option><option>البحر الأحمر</option>
+          <option>الوادي الجديد</option><option>مطروح</option><option>أسوان</option>
+        </select>
+        <input type="text" id="co-address" placeholder="العنوان بالتفصيل" />
+        <button class="btn-primary" onclick="goToPayment()">التالي: اختر طريقة الدفع</button>
+      </div>
+      <div class="step" id="step2">
+        <h4>2. طريقة الدفع</h4>
+        <div class="payment-options">
+          <label class="payment-opt"><input type="radio" name="payment" value="cod" checked /> 💵 الدفع عند الاستلام</label>
+          <label class="payment-opt"><input type="radio" name="payment" value="vodafone" /> 📱 فودافون كاش</label>
+          <label class="payment-opt"><input type="radio" name="payment" value="card" /> 💳 بطاقة بنكية</label>
+          <label class="payment-opt"><input type="radio" name="payment" value="instapay" /> 🏦 Instapay</label>
+        </div>
+        <div id="vodafone-details" class="payment-detail" style="display:none">
+          <p>حوّل المبلغ على: <strong>01000000000</strong> ثم أرسل إيصال التحويل</p>
+          <input type="text" placeholder="رقم إيصال التحويل" id="vodafone-ref" />
+        </div>
+        <div id="card-details" class="payment-detail" style="display:none">
+          <input type="text" placeholder="رقم البطاقة" maxlength="19" id="card-num" />
+          <div style="display:flex;gap:1rem">
+            <input type="text" placeholder="تاريخ الانتهاء MM/YY" />
+            <input type="text" placeholder="CVV" maxlength="3" />
+          </div>
+        </div>
+        <div class="order-summary" id="orderSummary"></div>
+        <div style="display:flex;gap:1rem">
+          <button class="btn-outline" onclick="goToDelivery()">السابق</button>
+          <button class="btn-primary" onclick="placeOrder()">تأكيد الطلب 🎉</button>
+        </div>
+      </div>
+      <div class="step" id="step3">
+        <div class="order-success">
+          <div class="success-icon">✅</div>
+          <h3>تم استلام طلبك بنجاح!</h3>
+          <p>رقم طلبك: <strong id="orderNumber"></strong></p>
+          <p>سيتواصل معك فريقنا خلال 30 دقيقة لتأكيد الطلب والتوصيل.</p>
+          <button class="btn-primary" onclick="closeCheckout(); resetCart()">العودة للتسوق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal login-modal">
+    <div class="modal-header">
+      <h3>تسجيل الدخول</h3>
+      <button class="modal-close" onclick="closeLogin()">✕</button>
+    </div>
+    <div class="login-tabs">
+      <button class="tab-btn active" onclick="switchTab('login')">دخول</button>
+      <button class="tab-btn" onclick="switchTab('register')">تسجيل جديد</button>
+    </div>
+    <div id="loginForm">
+      <input type="tel" placeholder="رقم الهاتف" />
+      <input type="password" placeholder="كلمة المرور" />
+      <button class="btn-primary">دخول</button>
+      <p class="forgot-link"><a href="#">نسيت كلمة المرور؟</a></p>
+    </div>
+    <div id="registerForm" style="display:none">
+      <input type="text" placeholder="الاسم الكامل" />
+      <input type="tel" placeholder="رقم الهاتف" />
+      <input type="password" placeholder="كلمة المرور" />
+      <input type="password" placeholder="تأكيد كلمة المرور" />
+      <button class="btn-primary">إنشاء حساب</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
