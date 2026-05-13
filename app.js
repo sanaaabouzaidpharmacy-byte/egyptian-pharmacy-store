@@ -1,4 +1,70 @@
 // ===================== DATA =====================
+const imgs = {
+  pill: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+  vit: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=600&q=80',
+  bot: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=600&q=80',
+  cre: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=600&q=80',
+};
+
+const productsData = [
+  // مسكنات
+  { id: 1, name: 'بانادول إكسترا', nameEn: 'Panadol Extra', price: 75, oldPrice: 90, category: 'مسكنات الألم', desc: 'باراسيتامول + كافيين — 24 قرص', image: imgs.pill, badge: 'offer', prescription: false },
+  { id: 2, name: 'كتافلام 50 مجم', nameEn: 'Cataflam 50mg', price: 95, oldPrice: null, category: 'مسكنات الألم', desc: 'ديكلوفيناك بوتاسيوم — 30 قرص', image: imgs.pill, badge: null, prescription: false },
+  { id: 3, name: 'بروفين 400 مجم', nameEn: 'Brufen 400mg', price: 55, oldPrice: null, category: 'مسكنات الألم', desc: 'إيبوبروفين — 20 قرص', image: imgs.pill, badge: null, prescription: false },
+  { id: 4, name: 'فولتارين جل', nameEn: 'Voltaren Gel', price: 120, oldPrice: null, category: 'مسكنات الألم', desc: 'ديكلوفيناك موضعي — 100 جم', image: imgs.cre, badge: null, prescription: false },
+  { id: 5, name: 'أركوكسيا 90', nameEn: 'Arcoxia 90mg', price: 165, oldPrice: null, category: 'مسكنات الألم', desc: 'إيتوريكوكسيب — 7 أقراص', image: imgs.pill, badge: null, prescription: true },
+  // مضادات حيوية
+  { id: 6, name: 'أوجمنتين 1 جم', nameEn: 'Augmentin 1g', price: 195, oldPrice: null, category: 'مضادات حيوية', desc: 'أموكسيسيلين + حمض كلافولانيك — 14 قرص', image: imgs.bot, badge: null, prescription: true },
+  { id: 7, name: 'زيثروماكس 500', nameEn: 'Zithromax 500mg', price: 180, oldPrice: null, category: 'مضادات حيوية', desc: 'أزيثروميسين — 3 أقراص', image: imgs.pill, badge: null, prescription: true },
+  { id: 8, name: 'فلاجيل 500', nameEn: 'Flagyl 500mg', price: 45, oldPrice: null, category: 'مضادات حيوية', desc: 'ميترونيدازول — 20 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 9, name: 'سيبروفلوكساسين 500', nameEn: 'Ciprofloxacin 500mg', price: 65, oldPrice: null, category: 'مضادات حيوية', desc: 'سيبروفلوكساسين — 10 أقراص', image: imgs.pill, badge: null, prescription: true },
+  { id: 10, name: 'دوكسيسيكلين 100', nameEn: 'Doxycycline 100mg', price: 55, oldPrice: null, category: 'مضادات حيوية', desc: 'دوكسيسيكلين — 10 أقراص', image: imgs.pill, badge: null, prescription: true },
+  // فيتامينات
+  { id: 11, name: 'فيتامين C 1000', nameEn: 'Vitamin C 1000', price: 130, oldPrice: null, category: 'فيتامينات', desc: 'حمض الأسكوربيك فوار — 20 كيس', image: imgs.vit, badge: 'new', prescription: false },
+  { id: 12, name: 'برفيكتيل', nameEn: 'Perfectil', price: 225, oldPrice: 270, category: 'فيتامينات', desc: 'فيتامينات كاملة للبشرة والشعر — 30 قرص', image: imgs.vit, badge: 'offer', prescription: false },
+  { id: 13, name: 'أوميجا 3', nameEn: 'Omega 3', price: 110, oldPrice: null, category: 'فيتامينات', desc: 'أحماض دهنية لصحة القلب — 30 كبسولة', image: imgs.bot, badge: null, prescription: false },
+  { id: 14, name: 'فيتامين د 1000', nameEn: 'Vitamin D 1000', price: 95, oldPrice: null, category: 'فيتامينات', desc: 'كوليكالسيفيرول — 30 كبسولة', image: imgs.vit, badge: null, prescription: false },
+  { id: 15, name: 'مولتي فيتامين سنتروم', nameEn: 'Centrum', price: 195, oldPrice: 220, category: 'فيتامينات', desc: 'مولتي فيتامين متكامل — 30 قرص', image: imgs.vit, badge: 'offer', prescription: false },
+  { id: 16, name: 'سلينيوم إيس', nameEn: 'Selenium Ace', price: 155, oldPrice: 185, category: 'فيتامينات', desc: 'مضادات أكسدة + سيلينيوم — 30 قرص', image: imgs.vit, badge: 'offer', prescription: false },
+  { id: 17, name: 'زنك 50 مجم', nameEn: 'Zinc 50mg', price: 65, oldPrice: null, category: 'فيتامينات', desc: 'أقراص زنك لتقوية المناعة — 30 قرص', image: imgs.vit, badge: null, prescription: false },
+  // نزلات البرد
+  { id: 18, name: 'كونجستال', nameEn: 'Congestal', price: 45, oldPrice: null, category: 'نزلات البرد', desc: 'باراسيتامول + سودوإيفيدرين — 10 أقراص', image: imgs.pill, badge: null, prescription: false },
+  { id: 19, name: 'أكتيفيد', nameEn: 'Actifed', price: 52, oldPrice: null, category: 'نزلات البرد', desc: 'ترييبروليدين + سودوإيفيدرين — 10 أقراص', image: imgs.pill, badge: null, prescription: false },
+  { id: 20, name: 'ديكونجستال', nameEn: 'Decongestal', price: 38, oldPrice: null, category: 'نزلات البرد', desc: 'مزيل احتقان — 10 أقراص', image: imgs.pill, badge: null, prescription: false },
+  // أدوية مزمنة
+  { id: 21, name: 'ميتفورمين 1000', nameEn: 'Metformin 1000', price: 35, oldPrice: null, category: 'أدوية مزمنة', desc: 'لضبط سكر الدم — 30 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 22, name: 'أتورفاستاتين 40', nameEn: 'Atorvastatin 40mg', price: 55, oldPrice: null, category: 'أدوية مزمنة', desc: 'لخفض الكوليسترول — 30 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 23, name: 'أملوديبين 5 مجم', nameEn: 'Amlodipine 5mg', price: 42, oldPrice: null, category: 'أدوية مزمنة', desc: 'لضغط الدم — 30 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 24, name: 'أوميبرازول 20 مجم', nameEn: 'Omeprazole 20mg', price: 48, oldPrice: null, category: 'أدوية مزمنة', desc: 'لحموضة المعدة — 14 كبسولة', image: imgs.bot, badge: null, prescription: false },
+  { id: 25, name: 'بانتوبرازول 40', nameEn: 'Pantoprazole 40mg', price: 75, oldPrice: null, category: 'أدوية مزمنة', desc: 'لقرحة المعدة — 14 قرص', image: imgs.pill, badge: null, prescription: true },
+  // العناية بالبشرة
+  { id: 26, name: 'نيفياكير كريم', nameEn: 'Nivea Cream', price: 75, oldPrice: null, category: 'العناية بالبشرة', desc: 'كريم مرطب للبشرة — 200 مل', image: imgs.cre, badge: null, prescription: false },
+  { id: 27, name: 'درماكول كريم', nameEn: 'Dermacool', price: 95, oldPrice: null, category: 'العناية بالبشرة', desc: 'كريم مضاد للالتهابات — 30 جم', image: imgs.cre, badge: null, prescription: false },
+  { id: 28, name: 'يوسيرين لوشن', nameEn: 'Eucerin Lotion', price: 185, oldPrice: 220, category: 'العناية بالبشرة', desc: 'لوشن مرطب للبشرة الجافة — 250 مل', image: imgs.cre, badge: 'offer', prescription: false },
+  { id: 29, name: 'فيتامين هـ كريم', nameEn: 'Vitamin E Cream', price: 85, oldPrice: null, category: 'العناية بالبشرة', desc: 'كريم فيتامين E مغذي — 100 جم', image: imgs.cre, badge: null, prescription: false },
+  // العناية بالشعر
+  { id: 30, name: 'هير تون', nameEn: 'Hair Tone', price: 195, oldPrice: null, category: 'العناية بالشعر', desc: 'كبسولات لتقوية الشعر — 30 كبسولة', image: imgs.cre, badge: 'new', prescription: false },
+  { id: 31, name: 'مينوكسيديل 5%', nameEn: 'Minoxidil 5%', price: 280, oldPrice: null, category: 'العناية بالشعر', desc: 'محلول موضعي لتساقط الشعر — 60 مل', image: imgs.bot, badge: null, prescription: false },
+  { id: 32, name: 'فينيسيا كبسولات', nameEn: 'Venezia', price: 165, oldPrice: 195, category: 'العناية بالشعر', desc: 'مكمل غذائي لتقوية الشعر — 30 كبسولة', image: imgs.vit, badge: 'offer', prescription: false },
+  // أدوية الأطفال
+  { id: 33, name: 'بانادول أطفال شراب', nameEn: 'Panadol Baby Syrup', price: 65, oldPrice: null, category: 'أدوية الأطفال', desc: 'باراسيتامول للأطفال — 100 مل', image: imgs.bot, badge: null, prescription: false },
+  { id: 34, name: 'إنشور بودرة', nameEn: 'Ensure Powder', price: 345, oldPrice: 395, category: 'أدوية الأطفال', desc: 'مكمل غذائي متكامل للأطفال — فانيليا', image: imgs.vit, badge: 'offer', prescription: false },
+  { id: 35, name: 'نوفالوف قطرات', nameEn: 'Novalof Drops', price: 55, oldPrice: null, category: 'أدوية الأطفال', desc: 'لمغص الرضع — 15 مل', image: imgs.bot, badge: null, prescription: false },
+  // التخسيس
+  { id: 36, name: 'أوريستات 120', nameEn: 'Orlistat 120mg', price: 350, oldPrice: null, category: 'التخسيس', desc: 'لتقليل امتصاص الدهون — 30 كبسولة', image: imgs.bot, badge: null, prescription: true },
+  { id: 37, name: 'جارسينيا كامبوجيا', nameEn: 'Garcinia Cambogia', price: 195, oldPrice: 240, category: 'التخسيس', desc: 'مكمل طبيعي لفقدان الوزن — 60 كبسولة', image: imgs.vit, badge: 'offer', prescription: false },
+  // مستلزمات طبية
+  { id: 38, name: 'شاش طبي معقم', nameEn: 'Sterile Gauze', price: 25, oldPrice: null, category: 'مستلزمات طبية', desc: 'شاش معقم — 10 قطع', image: imgs.pill, badge: null, prescription: false },
+  { id: 39, name: 'جهاز قياس السكر', nameEn: 'Glucose Meter', price: 495, oldPrice: 595, category: 'مستلزمات طبية', desc: 'جهاز قياس جلوكوز الدم + 25 شريط', image: imgs.bot, badge: 'offer', prescription: false },
+  { id: 40, name: 'جهاز قياس الضغط', nameEn: 'BP Monitor', price: 895, oldPrice: null, category: 'مستلزمات طبية', desc: 'جهاز رقمي لقياس ضغط الدم', image: imgs.bot, badge: null, prescription: false },
+  // أدوية مزمنة إضافية
+  { id: 41, name: 'ليفوثيروكسين 100', nameEn: 'Levothyroxine 100mcg', price: 38, oldPrice: null, category: 'أدوية مزمنة', desc: 'لعلاج قصور الغدة الدرقية — 50 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 42, name: 'ريلتيجريف', nameEn: 'Raltegravir', price: 4500, oldPrice: null, category: 'أدوية مزمنة', desc: 'مضاد فيروسي — 60 قرص', image: imgs.pill, badge: null, prescription: true },
+  { id: 43, name: 'إزوميبرازول 40', nameEn: 'Esomeprazole 40mg', price: 85, oldPrice: null, category: 'أدوية مزمنة', desc: 'لارتجاع المريء — 14 قرص', image: imgs.pill, badge: null, prescription: false },
+  { id: 44, name: 'فاستوم جيل', nameEn: 'Fastum Gel', price: 110, oldPrice: null, category: 'مسكنات الألم', desc: 'كيتوبروفين موضعي — 100 جم', image: imgs.cre, badge: null, prescription: false },
+  { id: 45, name: 'بيكاربونات صوديوم', nameEn: 'Sodium Bicarbonate', price: 15, oldPrice: null, category: 'أدوية مزمنة', desc: 'لحموضة المعدة — 50 قرص', image: imgs.pill, badge: null, prescription: false },
+];
+
 const categoriesData = [
   { name: 'مسكنات الألم', icon: '💊' },
   { name: 'فيتامينات', icon: '🍊' },
